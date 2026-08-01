@@ -41,6 +41,7 @@ export function renderFrontendHtml(): string {
     "@type": "WebApplication",
     "name": "Banners.Pheco.Dev",
     "url": "https://banners.pheco.dev",
+    "image": "https://banners.pheco.dev/banner.png?title=Banners.Pheco.Dev&subtitle=Free+Open-Graph+%26+Social+Media+Banner+Generator&theme=turquoise&logo=cloudflare",
     "description": "Ultra-fast Open Graph and Social Media Banner Generator powered by Cloudflare Workers & Satori.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "All",
