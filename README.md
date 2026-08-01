@@ -5,6 +5,8 @@
 [![Flat UI Colors](https://img.shields.io/badge/Flat_UI_Colors-24_Palettes-1ABC9C?style=for-the-badge)](https://flatuicolors.com/)
 [![theSVG Library](https://img.shields.io/badge/theSVG_Icons-6%2C400%2B_Logos-0984E3?style=for-the-badge)](https://thesvg.org/)
 
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/nhanchaukp/banners-generator-cw)
+
 **Banners.Pheco.Dev** is an ultra-fast, sub-50ms dynamic social media banner and Open Graph (OG) image generator powered by **Cloudflare Workers**, **Satori**, and **Resvg WASM**.
 
 Create Open Graph cards, GitHub repository heroes, YouTube thumbnails, and tech banners programmatically via clean API URLs or through our interactive Web UI workbench.
@@ -88,7 +90,7 @@ Choose from 24 curated palettes inspired by [Flat UI Colors](https://flatuicolor
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/banners-generator-cw.git
+git clone https://github.com/nhanchaukp/banners-generator-cw.git
 cd banners-generator-cw
 
 # Install dependencies
@@ -100,13 +102,19 @@ npm run dev
 
 Open [http://localhost:8787](http://localhost:8787) in your browser.
 
-### Type Generation & Deployment
+### 1-Click Deploy to Cloudflare Workers
+
+Deploy your own instance directly to Cloudflare Workers with a single click:
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/nhanchaukp/banners-generator-cw)
+
+### CLI Type Generation & Deployment
 
 ```bash
 # Synchronize Cloudflare Worker types
 npm run cf-typegen
 
-# Deploy to Cloudflare Workers
+# Deploy to Cloudflare Workers via Wrangler CLI
 npm run deploy
 ```
 
