@@ -11,7 +11,7 @@ app.get('/', (c) => {
 })
 
 // Preset Icons List API
-app.get('/api/preset-icons', (c) => {
+app.get('/preset-icons', (c) => {
   const icons = Object.values(TECH_ICONS).map(({ id, name, category }) => ({
     id,
     name,
@@ -52,7 +52,7 @@ function parseOptions(query: Record<string, string>): BannerOptions {
 }
 
 // Raw SVG Banner Endpoint
-app.get('/api/banner.svg', async (c) => {
+app.get('/banner.svg', async (c) => {
   const query = c.req.query()
   const options = parseOptions(query)
   const svg = await renderBannerSvg(options)
@@ -62,8 +62,8 @@ app.get('/api/banner.svg', async (c) => {
   return c.body(svg)
 })
 
-// PNG Banner Endpoint (Ultra-fast Satori Edge Engine)
-app.get('/api/banner', async (c) => {
+// PNG Banner Endpoint (supporting both /banner and /banner.png)
+const renderPngHandler = async (c: any) => {
   const query = c.req.query()
   const options = parseOptions(query)
   const pngBuffer = await renderBannerPng(options)
@@ -71,10 +71,13 @@ app.get('/api/banner', async (c) => {
   c.header('Content-Type', 'image/png')
   c.header('Cache-Control', 'public, max-age=86400, s-maxage=604800, immutable')
   return c.body(pngBuffer)
-})
+}
+
+app.get('/banner', renderPngHandler)
+app.get('/banner.png', renderPngHandler)
 
 // Custom File Upload API for Logos
-app.post('/api/upload', async (c) => {
+app.post('/upload', async (c) => {
   try {
     const body = await c.req.parseBody()
     const file = body['file']

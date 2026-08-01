@@ -29,11 +29,11 @@ Create Open Graph cards, GitHub repository heroes, YouTube thumbnails, and tech 
 Embed dynamic banners in your `README.md` or web pages:
 
 ```markdown
-![Banners.Pheco.Dev](https://banners.pheco.dev/api/banner.png?title=Banners.Pheco.Dev&subtitle=Free+OG+Image+Generator&theme=turquoise&logo=cloudflare)
+![Banners.Pheco.Dev](https://banners.pheco.dev/banner.png?title=Banners.Pheco.Dev&subtitle=Free+OG+Image+Generator&theme=turquoise&logo=cloudflare)
 ```
 
 ```html
-<img src="https://banners.pheco.dev/api/banner.png?title=Banners.Pheco.Dev&subtitle=Free+OG+Image+Generator&theme=turquoise&logo=cloudflare" alt="OG Banner" />
+<img src="https://banners.pheco.dev/banner.png?title=Banners.Pheco.Dev&subtitle=Free+OG+Image+Generator&theme=turquoise&logo=cloudflare" alt="OG Banner" />
 ```
 
 ---
@@ -42,8 +42,8 @@ Embed dynamic banners in your `README.md` or web pages:
 
 ### Endpoints
 
-- **PNG Image**: `GET /api/banner.png` (or `/api/banner`)
-- **Raw SVG**: `GET /api/banner.svg`
+- **PNG Image**: `GET /banner.png` (or `/banner`)
+- **Raw SVG**: `GET /banner.svg`
 
 ### Query Parameters
 

@@ -23,7 +23,7 @@ export function renderFrontendHtml(): string {
   <meta property="og:url" content="https://banners.pheco.dev" />
   <meta property="og:title" content="Banners.Pheco.Dev — Free Open-Graph & Social Media Banner Generator" />
   <meta property="og:description" content="Generate ultra-fast Open Graph (OG) social media banners, hero graphics, and tech assets instantly using Cloudflare Workers & Satori. Free, sub-50ms rendering." />
-  <meta property="og:image" content="https://banners.pheco.dev/api/banner.png?title=Banners.Pheco.Dev&subtitle=Free+Open-Graph+%26+Social+Media+Banner+Generator&theme=cloudflare&logo=cloudflare" />
+  <meta property="og:image" content="https://banners.pheco.dev/banner.png?title=Banners.Pheco.Dev&subtitle=Free+Open-Graph+%26+Social+Media+Banner+Generator&theme=turquoise&logo=cloudflare" />
   <meta property="og:site_name" content="Banners.Pheco.Dev" />
   <meta property="og:locale" content="en_US" />
 
@@ -32,7 +32,7 @@ export function renderFrontendHtml(): string {
   <meta name="twitter:url" content="https://banners.pheco.dev" />
   <meta name="twitter:title" content="Banners.Pheco.Dev — Free Open-Graph & Social Media Banner Generator" />
   <meta name="twitter:description" content="Generate ultra-fast Open Graph (OG) social media banners, hero graphics, and tech assets instantly using Cloudflare Workers & Satori. Free, sub-50ms rendering." />
-  <meta name="twitter:image" content="https://banners.pheco.dev/api/banner.png?title=Banners.Pheco.Dev&subtitle=Free+Open-Graph+%26+Social+Media+Banner+Generator&theme=cloudflare&logo=cloudflare" />
+  <meta name="twitter:image" content="https://banners.pheco.dev/banner.png?title=Banners.Pheco.Dev&subtitle=Free+Open-Graph+%26+Social+Media+Banner+Generator&theme=turquoise&logo=cloudflare" />
 
   <!-- Structured Data / JSON-LD -->
   <script type="application/ld+json">
@@ -1073,7 +1073,7 @@ export function renderFrontendHtml(): string {
           this.loading = true;
           const startTime = performance.now();
           const q = this.buildQuery();
-          const src = '/api/banner?' + q;
+          const src = '/banner?' + q;
 
           const img = new Image();
           img.src = src;
@@ -1090,11 +1090,11 @@ export function renderFrontendHtml(): string {
         },
 
         downloadPng() {
-          window.open('/api/banner?' + this.buildQuery(), '_blank');
+          window.open('/banner?' + this.buildQuery(), '_blank');
         },
 
         downloadSvg() {
-          window.open('/api/banner.svg?' + this.buildQuery(), '_blank');
+          window.open('/banner.svg?' + this.buildQuery(), '_blank');
         },
 
         handleFileUpload(event) {
