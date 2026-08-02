@@ -18,6 +18,12 @@ export function renderFrontendHtml(): string {
   <link rel="canonical" href="https://banners.pheco.dev" />
   <meta name="theme-color" content="#f59e0b" />
 
+  <!-- Favicon & PWA Manifest Meta Tags -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://banners.pheco.dev" />
@@ -183,10 +189,16 @@ export function renderFrontendHtml(): string {
 
       <!-- Right Header Actions -->
       <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-xs font-mono-code font-semibold">
-          <i data-lucide="zap" class="w-3.5 h-3.5 text-emerald-500"></i>
-          SUB-50MS EDGE ENGINE
-        </div>
+        <!-- PWA Install Web App Button -->
+        <button 
+          x-show="canInstallPwa"
+          @click="installPwa()"
+          x-transition:enter="transition ease-out duration-200"
+          class="px-3 py-1.5 bg-amber-500 text-black hover:bg-amber-400 font-extrabold text-xs uppercase font-mono-code border border-black flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer"
+          title="Install Banners.Pheco.Dev Web App">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Install App</span>
+        </button>
 
         <!-- Dark / Light Mode Switcher -->
         <button 
@@ -738,6 +750,15 @@ export function renderFrontendHtml(): string {
             <i data-lucide="image" class="w-3 h-3 text-amber-500"></i>
             <span>theSVG Icon Library</span>
           </a>
+          <span class="text-[var(--border-outline-val)]">•</span>
+          <a 
+            href="https://www.penguinui.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="hover:text-amber-500 transition-colors flex items-center gap-1 text-[var(--text-on-surface)]">
+            <i data-lucide="layout" class="w-3 h-3 text-amber-500"></i>
+            <span>Penguin UI</span>
+          </a>
         </div>
 
         <div class="flex items-center gap-2">
@@ -822,6 +843,8 @@ export function renderFrontendHtml(): string {
         renderMs: null,
         darkMode: true,
         toast: { show: false, message: '' },
+        deferredPrompt: null,
+        canInstallPwa: false,
 
         themePresets: [
           { id: 'turquoise', name: 'Turquoise', bg: 'linear-gradient(135deg, #1abc9c, #16a085)' },
@@ -946,8 +969,41 @@ export function renderFrontendHtml(): string {
             }, 450);
           });
 
+          // Register PWA Service Worker
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(err => {
+              console.warn('Service worker registration failed:', err);
+            });
+          }
+
+          // Listen for PWA Install Prompt
+          window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            this.deferredPrompt = e;
+            this.canInstallPwa = true;
+          });
+
+          window.addEventListener('appinstalled', () => {
+            this.canInstallPwa = false;
+            this.deferredPrompt = null;
+            this.showToast('Banners.Pheco.Dev installed as Web App!');
+          });
+
           this.updatePreview();
           this.renderLucideIcons();
+        },
+
+        async installPwa() {
+          if (this.deferredPrompt) {
+            this.deferredPrompt.prompt();
+            const { outcome } = await this.deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+              this.canInstallPwa = false;
+            }
+            this.deferredPrompt = null;
+          } else {
+            this.showToast('App installation is available from your browser menu (Add to Home Screen).');
+          }
         },
 
         renderLucideIcons() {

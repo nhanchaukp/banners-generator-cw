@@ -10,6 +10,69 @@ app.get('/', (c) => {
   return c.html(renderFrontendHtml())
 })
 
+// Favicon SVG Endpoint
+app.get('/favicon.svg', (c) => {
+  const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="110" fill="#0f172a"/>
+  <rect x="64" y="64" width="384" height="384" rx="64" fill="#f59e0b" stroke="#000000" stroke-width="24"/>
+  <text x="256" y="325" font-family="'JetBrains Mono', monospace, system-ui, sans-serif" font-weight="900" font-size="240" fill="#000000" text-anchor="middle">B</text>
+</svg>`
+  c.header('Content-Type', 'image/svg+xml')
+  c.header('Cache-Control', 'public, max-age=86400, s-maxage=604800, immutable')
+  return c.body(faviconSvg)
+})
+
+// Web App Manifest Endpoint
+app.get('/manifest.json', (c) => {
+  return c.json({
+    name: 'Banners.Pheco.Dev — Social Banner Generator',
+    short_name: 'Banners.Pheco',
+    description: 'Generate ultra-fast Open Graph social images & tech hero banners powered by Cloudflare Workers',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#0f172a',
+    theme_color: '#f59e0b',
+    icons: [
+      {
+        src: '/favicon.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+        purpose: 'any maskable'
+      }
+    ]
+  })
+})
+
+// PWA Service Worker Route
+app.get('/sw.js', (c) => {
+  const swScript = `
+const CACHE_NAME = 'banners-pheco-v1';
+const ASSETS_TO_CACHE = ['/', '/favicon.svg', '/manifest.json'];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match('/'))
+    );
+  }
+});
+`
+  c.header('Content-Type', 'application/javascript')
+  c.header('Cache-Control', 'public, max-age=86400, s-maxage=604800, immutable')
+  return c.body(swScript)
+})
+
 // Preset Icons List API
 app.get('/preset-icons', (c) => {
   const icons = Object.values(TECH_ICONS).map(({ id, name, category }) => ({

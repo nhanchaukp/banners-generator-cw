@@ -127,6 +127,7 @@ npm run deploy
 - **[Resvg WASM](https://github.com/yisabl/resvg-js)**: High-performance SVG to PNG converter.
 - **[Flat UI Colors](https://flatuicolors.com/)**: Color palette inspiration.
 - **[theSVG](https://thesvg.org/)**: Open-source 6,400+ SVG icon library.
+- **[Penguin UI](https://www.penguinui.com)**: Component UI design system.
 - **Sponsored by [fcode.vn](https://fcode.vn)**.
 
 ---
