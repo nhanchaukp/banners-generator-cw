@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { renderFrontendHtml } from './ui/frontend'
+import { renderErrorHtml } from './ui/error-page'
 import { renderBannerPng, renderBannerSvg, BannerOptions } from './engine/satori-renderer'
 import { TECH_ICONS } from './engine/icons'
 
@@ -154,6 +155,51 @@ app.post('/upload', async (c) => {
   } catch (err: any) {
     return c.json({ success: false, error: err?.message }, 500)
   }
+})
+
+// Custom 404 Not Found Handler
+app.notFound((c) => {
+  const accept = c.req.header('accept') || ''
+  const isJson = accept.includes('application/json') || c.req.path.startsWith('/preset-icons') || c.req.path.startsWith('/upload')
+  const isImage = accept.includes('image/') || c.req.path.startsWith('/banner')
+
+  if (isJson) {
+    return c.json({ success: false, error: 'Route Not Found', path: c.req.path }, 404)
+  }
+  if (isImage && !accept.includes('text/html')) {
+    c.header('Content-Type', 'image/png')
+    c.header('Cache-Control', 'no-cache')
+    return c.body(new Uint8Array(), 404)
+  }
+
+  return c.html(
+    renderErrorHtml(
+      404,
+      'Page Not Found',
+      `The requested page or route "${c.req.path}" could not be found on Banners.Pheco.Dev Edge Router.`
+    ),
+    404
+  )
+})
+
+// Custom 500 / Internal Error Handler
+app.onError((err, c) => {
+  console.error('Unhandled Server Error:', err)
+  const accept = c.req.header('accept') || ''
+  const isJson = accept.includes('application/json') || c.req.path.startsWith('/preset-icons') || c.req.path.startsWith('/upload')
+
+  if (isJson) {
+    return c.json({ success: false, error: err?.message || 'Internal Server Error' }, 500)
+  }
+
+  return c.html(
+    renderErrorHtml(
+      500,
+      'Internal Server Error',
+      `An unexpected error occurred on the Edge Worker: ${err?.message || 'Unknown exception'}. Please try reloading.`
+    ),
+    500
+  )
 })
 
 export default app
