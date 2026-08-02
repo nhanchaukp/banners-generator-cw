@@ -1,9 +1,17 @@
-export function renderErrorHtml(status: number, title: string, message: string): string {
+export function renderErrorHtml(status: number, title: string, message: string, gaId?: string): string {
   return `<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${gaId ? `<!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${gaId}');
+  </script>` : ''}
   <title>${status} — ${title} | Banners.Pheco.Dev</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   

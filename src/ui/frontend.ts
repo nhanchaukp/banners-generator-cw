@@ -1,6 +1,6 @@
 import { TECH_ICONS } from '../engine/icons'
 
-export function renderFrontendHtml(): string {
+export function renderFrontendHtml(gaId?: string): string {
   const iconsJson = JSON.stringify(TECH_ICONS)
 
   return `<!DOCTYPE html>
@@ -8,6 +8,14 @@ export function renderFrontendHtml(): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${gaId ? `<!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${gaId}');
+  </script>` : ''}
   <!-- Primary SEO Meta Tags -->
   <title>Banners.Pheco.Dev — Free Open-Graph & Social Media Banner Generator</title>
   <meta name="title" content="Banners.Pheco.Dev — Free Open-Graph & Social Media Banner Generator" />

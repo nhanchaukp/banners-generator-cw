@@ -4,11 +4,15 @@ import { renderErrorHtml } from './ui/error-page'
 import { renderBannerPng, renderBannerSvg, BannerOptions } from './engine/satori-renderer'
 import { TECH_ICONS } from './engine/icons'
 
-const app = new Hono()
+export interface EnvBindings {
+  GA_MEASUREMENT_ID?: string
+}
+
+const app = new Hono<{ Bindings: EnvBindings }>()
 
 // Web UI Dashboard
 app.get('/', (c) => {
-  return c.html(renderFrontendHtml())
+  return c.html(renderFrontendHtml(c.env.GA_MEASUREMENT_ID))
 })
 
 // Favicon SVG Endpoint
@@ -176,7 +180,8 @@ app.notFound((c) => {
     renderErrorHtml(
       404,
       'Page Not Found',
-      `The requested page or route "${c.req.path}" could not be found on Banners.Pheco.Dev Edge Router.`
+      `The requested page or route "${c.req.path}" could not be found on Banners.Pheco.Dev Edge Router.`,
+      c.env.GA_MEASUREMENT_ID
     ),
     404
   )
@@ -196,7 +201,8 @@ app.onError((err, c) => {
     renderErrorHtml(
       500,
       'Internal Server Error',
-      `An unexpected error occurred on the Edge Worker: ${err?.message || 'Unknown exception'}. Please try reloading.`
+      `An unexpected error occurred on the Edge Worker: ${err?.message || 'Unknown exception'}. Please try reloading.`,
+      c.env.GA_MEASUREMENT_ID
     ),
     500
   )

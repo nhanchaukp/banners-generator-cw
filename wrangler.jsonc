@@ -6,6 +6,9 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "vars": {
+    "GA_MEASUREMENT_ID": ""
+  },
   "rules": [
     {
       "type": "CompiledWasm",
