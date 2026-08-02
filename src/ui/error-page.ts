@@ -80,6 +80,10 @@ export function renderErrorHtml(status: number, title: string, message: string, 
       border-radius: 0 !important;
     }
 
+    button {
+      cursor: pointer !important;
+    }
+
     .font-mono-code {
       font-family: 'JetBrains Mono', monospace;
     }

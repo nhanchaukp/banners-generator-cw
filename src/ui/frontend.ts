@@ -162,6 +162,10 @@ export function renderFrontendHtml(gaId?: string): string {
       border-radius: 0 !important;
     }
 
+    button {
+      cursor: pointer !important;
+    }
+
     .font-mono-code {
       font-family: 'JetBrains Mono', monospace;
     }
@@ -476,14 +480,14 @@ export function renderFrontendHtml(gaId?: string): string {
             </div>
           </template>
 
-          <div class="grid grid-cols-4 sm:grid-cols-5 gap-2 max-h-44 overflow-y-auto p-1 border border-[var(--border-outline-val)] bg-[var(--bg-surface)]">
+          <div class="grid grid-cols-4 sm:grid-cols-5 gap-2 max-h-48 overflow-y-auto p-1.5 border border-[var(--border-outline-val)] bg-[var(--bg-surface)]">
             <template x-for="icon in filteredIcons" :key="icon.id">
               <button 
                 @click="presetLogo = icon.id"
-                :class="presetLogo === icon.id ? 'border-amber-500 bg-amber-500/20 text-white font-bold' : 'border-stone-700/50 hover:border-amber-500/60 text-stone-400'"
-                class="p-2 border flex flex-col items-center justify-center gap-1 transition-all">
-                <div class="w-6 h-6 flex items-center justify-center" x-html="icon.svg"></div>
-                <span class="text-[10px] truncate max-w-full font-mono-code" x-text="icon.name"></span>
+                :class="presetLogo === icon.id ? 'border-amber-500 bg-amber-500/20 text-white font-bold ring-1 ring-amber-500' : 'border-[var(--border-outline-val)] hover:border-amber-500/60 text-[var(--text-on-surface)]'"
+                class="p-2 border flex flex-col items-center justify-center gap-1 transition-all h-16 relative overflow-hidden cursor-pointer select-none">
+                <div class="w-6 h-6 flex items-center justify-center overflow-hidden pointer-events-none [&_svg]:w-full [&_svg]:h-full [&_svg]:max-w-full [&_svg]:max-h-full [&_svg]:object-contain" x-html="icon.svg"></div>
+                <span class="text-[10px] truncate max-w-full font-mono-code pointer-events-none" x-text="icon.name"></span>
               </button>
             </template>
           </div>
