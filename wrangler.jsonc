@@ -1,24 +1,33 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "banners-generator-cw",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-08-01",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "vars": {
-    "GA_MEASUREMENT_ID": ""
-  },
-  "rules": [
-    {
-      "type": "CompiledWasm",
-      "globs": [
-        "**/*.wasm"
-      ],
-      "fallthrough": true
-    }
-  ],
-  "observability": {
-    "enabled": true
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "banners-generator-cw",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-08-01",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"vars": {
+		"GA_MEASUREMENT_ID": "G-YJCT4ZG7QR"
+	},
+	"rules": [
+		{
+			"type": "CompiledWasm",
+			"globs": [
+				"**/*.wasm"
+			],
+			"fallthrough": true
+		}
+	],
+	"observability": {
+		"enabled": true
+	},
+	"routes": [
+		{
+			"pattern": "banners.pheco.dev",
+			"zone_name": "pheco.dev",
+			"custom_domain": true,
+			"enabled": true,
+			"previews_enabled": false
+		}
+	]
 }
