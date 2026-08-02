@@ -385,7 +385,6 @@ export async function renderBannerSvg(options: BannerOptions): Promise<string> {
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        zIndex: 10,
         fontSize: '14px',
         color: subtitleColor,
         opacity: 0.75,
@@ -445,7 +444,6 @@ export async function renderBannerSvg(options: BannerOptions): Promise<string> {
               flexDirection: 'column',
               alignItems: align,
               justifyContent: 'center',
-              zIndex: 10,
               height: '100%'
             },
             children: [
