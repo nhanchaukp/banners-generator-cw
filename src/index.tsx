@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { renderFrontendHtml } from './ui/frontend'
+import { FrontendPage } from './ui/frontend'
 import { renderErrorHtml } from './ui/error-page'
 import { renderBannerPng, renderBannerSvg, BannerOptions } from './engine/satori-renderer'
 import { TECH_ICONS } from './engine/icons'
@@ -12,7 +12,7 @@ const app = new Hono<{ Bindings: EnvBindings }>()
 
 // Web UI Dashboard
 app.get('/', (c) => {
-  return c.html(renderFrontendHtml(c.env.GA_MEASUREMENT_ID))
+  return c.html(<FrontendPage gaId={c.env.GA_MEASUREMENT_ID} />)
 })
 
 // Favicon SVG Endpoint
