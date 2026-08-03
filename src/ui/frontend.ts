@@ -725,6 +725,163 @@ export function renderFrontendHtml(gaId?: string): string {
 
   </main>
 
+  <!-- Why Choose Banners.Pheco.Dev Section -->
+  <section class="border-t border-[var(--border-outline-val)] bg-[var(--bg-surface-alt)] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Subtle Ambient Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto space-y-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-xs font-bold uppercase tracking-wider font-mono-code">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>WHY CHOOSE BANNERS.PHECO.DEV</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[var(--text-on-surface-strong)] tracking-tight">
+          Why Choose Banners.Pheco.Dev?
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-on-surface)] leading-relaxed opacity-90">
+          The premier automated Open Graph & social media image generation platform built for developers, creators, and marketers.
+        </p>
+      </div>
+
+      <!-- 8 Reasons Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Reason 1: Edge Speed -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-amber-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+              <i data-lucide="zap" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-amber-500 font-bold uppercase tracking-widest font-mono-code">01. EDGE SPEED</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">Sub-50ms Edge Performance</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Powered by Cloudflare Workers & next-gen Satori engine. Banners are rendered dynamically at edge nodes in milliseconds.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 2: 100% Free -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-emerald-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-colors">
+              <i data-lucide="gift" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-emerald-500 font-bold uppercase tracking-widest font-mono-code">02. FREE FOREVER</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">100% Free & No API Key</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Completely free for personal projects, blogs, open-source repos, and commercial sites without signups or API keys.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 3: 6,400+ Icons -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-sky-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors">
+              <i data-lucide="shapes" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest font-mono-code">03. RICH LIBRARY</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">6,400+ Tech Icons Library</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Seamlessly search 6,400+ icons from theSVG & Devicon, or provide custom logo URLs and direct image uploads.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 4: Multi-platform -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-purple-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-black transition-colors">
+              <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-purple-400 font-bold uppercase tracking-widest font-mono-code">04. MULTI-PLATFORM</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">Multi-Platform Preset Sizes</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Pre-configured dimensions for Facebook Open Graph (1200x630), Twitter/X (1200x600), YouTube Covers (1280x720), and Instagram (1080x1080).
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 5: 24+ Colors & Patterns -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-pink-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-black transition-colors">
+              <i data-lucide="palette" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-pink-400 font-bold uppercase tracking-widest font-mono-code">05. STYLING SYSTEM</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">24+ Color Schemes & Patterns</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Choose from 24 curated gradient palettes (Flat UI, Aussie, British) matched with 20+ patterns like Glow Mesh, Circuit, and Hexagons.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 6: Dynamic URL API -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-amber-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-amber-500 font-bold uppercase tracking-widest font-mono-code">06. DYNAMIC API</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">Direct Dynamic URL API</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Simply embed dynamic URL endpoints into <code class="text-amber-500 font-mono-code font-bold">og:image</code> meta tags or Markdown README files without hosting static files.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 7: Customization -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-indigo-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-black transition-colors">
+              <i data-lucide="sliders" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest font-mono-code">07. FLEXIBLE CONTROLS</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">Top-to-Bottom Customization</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Fine-tune title sizes, font alignment (Left/Center/Right), logo shapes (Round/Rounded/Square), and custom brand watermarks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reason 8: PWA & Offline Support -->
+        <div class="bg-[var(--bg-surface)] p-5 border border-[var(--border-outline-val)] hover:border-teal-500/60 transition-all duration-200 group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-10 h-10 bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:bg-teal-500 group-hover:text-black transition-colors">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-teal-400 font-bold uppercase tracking-widest font-mono-code">08. MODERN PWA</span>
+              <h3 class="text-sm font-extrabold text-[var(--text-on-surface-strong)] tracking-tight">Modern Responsive UI & PWA</h3>
+            </div>
+            <p class="text-xs text-[var(--text-on-surface)] leading-relaxed opacity-85">
+              Enjoy a sleek Penguin UI interface with Dark/Light mode support, LocalStorage persistence, and PWA desktop/mobile installation.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- Penguin UI Page Footer -->
   <footer class="border-t border-[var(--border-outline-val)] bg-[var(--bg-surface-alt)] py-8 mt-auto font-mono-code">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
