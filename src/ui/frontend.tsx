@@ -620,7 +620,126 @@ function WhyChooseSection() {
   )
 }
 
-// 6. Footer Component
+// 6. How to Add Open Graph Images Section Component
+function HowToAddOgSection() {
+  return (
+    <section class="border-t border-[var(--border-outline-val)] bg-[var(--bg-surface-alt)] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-mono-code">
+      <div class="max-w-7xl mx-auto space-y-8 relative z-10">
+        
+        {/* Section Header */}
+        <div class="text-center space-y-3 max-w-3xl mx-auto">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span>DEVELOPER INTEGRATION GUIDE</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-[var(--text-on-surface-strong)] tracking-tight font-sans">
+            How to Add Open Graph Images to Your Website
+          </h2>
+          <p class="text-xs sm:text-sm text-[var(--text-on-surface)] leading-relaxed opacity-90 font-sans">
+            Copy & paste ready code snippets for HTML5 websites and Next.js applications (App Router & Pages Router).
+          </p>
+        </div>
+
+        {/* Tab Buttons & Code Boxes */}
+        <div class="max-w-4xl mx-auto space-y-4">
+          <div class="border border-[var(--border-outline-val)] bg-[var(--bg-surface)] p-1 grid grid-cols-3 text-xs font-bold uppercase">
+            <button 
+              x-on:click="guideTab = 'html'" 
+              x-bind:class="guideTab === 'html' ? 'bg-amber-500 text-black font-extrabold shadow-sm' : 'text-[var(--text-on-surface)] hover:bg-black/10 dark:hover:bg-white/10'" 
+              class="py-2.5 flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="file-code" class="w-4 h-4"></i>
+              <span>HTML Meta Tags</span>
+            </button>
+            <button 
+              x-on:click="guideTab = 'next-app'" 
+              x-bind:class="guideTab === 'next-app' ? 'bg-amber-500 text-black font-extrabold shadow-sm' : 'text-[var(--text-on-surface)] hover:bg-black/10 dark:hover:bg-white/10'" 
+              class="py-2.5 flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+              <span>Next.js App Router</span>
+            </button>
+            <button 
+              x-on:click="guideTab = 'next-pages'" 
+              x-bind:class="guideTab === 'next-pages' ? 'bg-amber-500 text-black font-extrabold shadow-sm' : 'text-[var(--text-on-surface)] hover:bg-black/10 dark:hover:bg-white/10'" 
+              class="py-2.5 flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="code-2" class="w-4 h-4"></i>
+              <span>Next.js Pages Router</span>
+            </button>
+          </div>
+
+          {/* TAB 1: HTML */}
+          <div x-show="guideTab === 'html'" class="border border-[var(--border-outline-val)] bg-[var(--bg-surface)] p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-[var(--text-on-surface-strong)] flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500"></i>
+                <span>1. Standard HTML Meta Tags (index.html)</span>
+              </span>
+              <button 
+                x-on:click="copyToClipboard(htmlGuideCode, 'Copied HTML Meta Tags snippet!')"
+                class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-400 text-xs font-bold border border-amber-500/40 uppercase transition-all flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Code</span>
+              </button>
+            </div>
+            <pre class="p-4 bg-black/40 border border-[var(--border-outline-val)] text-xs text-amber-400 overflow-x-auto leading-relaxed select-all">
+              <code x-text="htmlGuideCode"></code>
+            </pre>
+            <p class="text-[11px] text-[var(--text-on-surface)] opacity-80 font-sans">
+              💡 <strong>Tip:</strong> Place these meta tags inside your <code class="text-amber-500">&lt;head&gt;</code> element. Facebook, Twitter/X, LinkedIn, and Discord will display your dynamic banner preview.
+            </p>
+          </div>
+
+          {/* TAB 2: Next.js App Router */}
+          <div x-show="guideTab === 'next-app'" class="border border-[var(--border-outline-val)] bg-[var(--bg-surface)] p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-[var(--text-on-surface-strong)] flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400"></i>
+                <span>2. Next.js App Router (app/layout.tsx or app/page.tsx)</span>
+              </span>
+              <button 
+                x-on:click="copyToClipboard(nextAppGuideCode, 'Copied Next.js App Router snippet!')"
+                class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-400 text-xs font-bold border border-amber-500/40 uppercase transition-all flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Code</span>
+              </button>
+            </div>
+            <pre class="p-4 bg-black/40 border border-[var(--border-outline-val)] text-xs text-sky-400 overflow-x-auto leading-relaxed select-all">
+              <code x-text="nextAppGuideCode"></code>
+            </pre>
+            <p class="text-[11px] text-[var(--text-on-surface)] opacity-80 font-sans">
+              💡 <strong>Tip:</strong> Export the <code class="text-amber-500">metadata</code> object in your Next.js App Router page or layout file.
+            </p>
+          </div>
+
+          {/* TAB 3: Next.js Pages Router */}
+          <div x-show="guideTab === 'next-pages'" class="border border-[var(--border-outline-val)] bg-[var(--bg-surface)] p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase text-[var(--text-on-surface-strong)] flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>3. Next.js Pages Router (pages/index.tsx)</span>
+              </span>
+              <button 
+                x-on:click="copyToClipboard(nextPagesGuideCode, 'Copied Next.js Pages Router snippet!')"
+                class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-400 text-xs font-bold border border-amber-500/40 uppercase transition-all flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Code</span>
+              </button>
+            </div>
+            <pre class="p-4 bg-black/40 border border-[var(--border-outline-val)] text-xs text-emerald-400 overflow-x-auto leading-relaxed select-all">
+              <code x-text="nextPagesGuideCode"></code>
+            </pre>
+            <p class="text-[11px] text-[var(--text-on-surface)] opacity-80 font-sans">
+              💡 <strong>Tip:</strong> Import <code class="text-amber-500">Head</code> from <code class="text-amber-500">next/head</code> to inject Open Graph meta tags into the HTML head element.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+// 7. Footer Component
 function Footer() {
   return (
     <footer class="border-t border-[var(--border-outline-val)] bg-[var(--bg-surface-alt)] py-8 mt-auto font-mono-code">
@@ -712,6 +831,7 @@ export function FrontendPage({ gaId }: FrontendProps) {
         watermarkBadge: 'SPONSORED BY FCODE.VN',
 
         activeTab: 'content',
+        guideTab: 'html',
         previewSrc: '',
         loading: false,
         renderMs: null,
@@ -787,6 +907,92 @@ export function FrontendPage({ gaId }: FrontendProps) {
 
         get htmlSnippet() {
           return '<img src="' + this.fullApiUrl + '" alt="' + (this.title || 'Banner') + '" />';
+        },
+
+        get htmlGuideCode() {
+          const url = this.fullApiUrl || 'https://banners.pheco.dev/banner.png?title=Your+Title&theme=turquoise&logo=cloudflare';
+          const t = this.title || 'Your Website Title';
+          const d = this.subtitle || 'Your website description';
+          return [
+            '\x3C!-- Open Graph / Facebook -->',
+            '<meta property="og:type" content="website" />',
+            '<meta property="og:url" content="https://yourwebsite.com" />',
+            '<meta property="og:title" content="' + t.replace(/"/g, '&quot;') + '" />',
+            '<meta property="og:description" content="' + d.replace(/"/g, '&quot;') + '" />',
+            '<meta property="og:image" content="' + url + '" />',
+            '',
+            '\x3C!-- Twitter Card -->',
+            '<meta name="twitter:card" content="summary_large_image" />',
+            '<meta name="twitter:title" content="' + t.replace(/"/g, '&quot;') + '" />',
+            '<meta name="twitter:description" content="' + d.replace(/"/g, '&quot;') + '" />',
+            '<meta name="twitter:image" content="' + url + '" />'
+          ].join(String.fromCharCode(10));
+        },
+
+        get nextAppGuideCode() {
+          const url = this.fullApiUrl || 'https://banners.pheco.dev/banner.png?title=Your+Title&theme=turquoise&logo=cloudflare';
+          const t = this.title || 'Your Website Title';
+          const d = this.subtitle || 'Your website description';
+          const dims = (this.dimension || '1200x630').split('x');
+          const w = dims[0];
+          const h = dims[1];
+          return [
+            'import type { Metadata } from "next";',
+            '',
+            'export const metadata: Metadata = {',
+            '  title: ' + JSON.stringify(t) + ',',
+            '  description: ' + JSON.stringify(d) + ',',
+            '  openGraph: {',
+            '    title: ' + JSON.stringify(t) + ',',
+            '    description: ' + JSON.stringify(d) + ',',
+            '    url: "https://yourwebsite.com",',
+            '    images: [',
+            '      {',
+            '        url: ' + JSON.stringify(url) + ',',
+            '        width: ' + w + ',',
+            '        height: ' + h + ',',
+            '        alt: ' + JSON.stringify(t) + ',',
+            '      },',
+            '    ],',
+            '  },',
+            '  twitter: {',
+            '    card: "summary_large_image",',
+            '    title: ' + JSON.stringify(t) + ',',
+            '    description: ' + JSON.stringify(d) + ',',
+            '    images: [' + JSON.stringify(url) + '],',
+            '  },',
+            '};'
+          ].join(String.fromCharCode(10));
+        },
+
+        get nextPagesGuideCode() {
+          const url = this.fullApiUrl || 'https://banners.pheco.dev/banner.png?title=Your+Title&theme=turquoise&logo=cloudflare';
+          const t = this.title || 'Your Website Title';
+          const d = this.subtitle || 'Your website description';
+          return [
+            'import Head from "next/head";',
+            '',
+            'export default function HomePage() {',
+            '  const ogImageUrl = ' + JSON.stringify(url) + ';',
+            '',
+            '  return (',
+            '    <>',
+            '      <Head>',
+            '        <title>' + t + '</title>',
+            '        <meta name="description" content="' + d.replace(/"/g, '&quot;') + '" />',
+            '        <meta property="og:title" content="' + t.replace(/"/g, '&quot;') + '" />',
+            '        <meta property="og:description" content="' + d.replace(/"/g, '&quot;') + '" />',
+            '        <meta property="og:image" content={ogImageUrl} />',
+            '        <meta name="twitter:card" content="summary_large_image" />',
+            '        <meta name="twitter:image" content={ogImageUrl} />',
+            '      </Head>',
+            '      <main>',
+            '        <h1>Welcome to My Website</h1>',
+            '      </main>',
+            '    </>',
+            '  );',
+            '}'
+          ].join(String.fromCharCode(10));
         },
 
         init() {
@@ -1246,6 +1452,7 @@ export function FrontendPage({ gaId }: FrontendProps) {
         </main>
 
         <WhyChooseSection />
+        <HowToAddOgSection />
         <Footer />
 
         <div 
